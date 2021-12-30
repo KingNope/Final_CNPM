@@ -1,0 +1,10 @@
+C:\ProgramData\ASUS\ASUS Live Update\Temp\CNPM\Final_Project\Final_Project\bin\Debug\Final_Project.exe.config
+C:\ProgramData\ASUS\ASUS Live Update\Temp\CNPM\Final_Project\Final_Project\bin\Debug\Final_Project.exe
+C:\ProgramData\ASUS\ASUS Live Update\Temp\CNPM\Final_Project\Final_Project\bin\Debug\Final_Project.pdb
+C:\ProgramData\ASUS\ASUS Live Update\Temp\CNPM\Final_Project\Final_Project\obj\Debug\Final_Project.csproj.AssemblyReference.cache
+C:\ProgramData\ASUS\ASUS Live Update\Temp\CNPM\Final_Project\Final_Project\obj\Debug\Final_Project.Properties.Resources.resources
+C:\ProgramData\ASUS\ASUS Live Update\Temp\CNPM\Final_Project\Final_Project\obj\Debug\Final_Project.csproj.GenerateResource.cache
+C:\ProgramData\ASUS\ASUS Live Update\Temp\CNPM\Final_Project\Final_Project\obj\Debug\Final_Project.csproj.CoreCompileInputs.cache
+C:\ProgramData\ASUS\ASUS Live Update\Temp\CNPM\Final_Project\Final_Project\obj\Debug\Final_Project.exe
+C:\ProgramData\ASUS\ASUS Live Update\Temp\CNPM\Final_Project\Final_Project\obj\Debug\Final_Project.pdb
+C:\ProgramData\ASUS\ASUS Live Update\Temp\CNPM\Final_Project\Final_Project\obj\Debug\Final_Project.Login.resources
