@@ -20,8 +20,8 @@ namespace Final_Project
         }
 
 
-        private string _nameproduct, thumbnail, des, quatly, cent, cato, dtiem;  
-        SqlConnection sqlConnection = new SqlConnection(@"Data Source=LAPTOP-HA348VVB\SQLEXPRESS;Initial Catalog=users;Integrated Security=True");
+        private string _nameproduct, thumbnail, des, quatly, cent, cato, dtiem;
+        SqlConnection sqlConnection = new Connect().sqlconnection;
 
         private void fillcate()
         {

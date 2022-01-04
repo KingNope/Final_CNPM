@@ -20,7 +20,7 @@ namespace Final_Project
         }
         private string name_category;
 
-        SqlConnection sqlConnection = new SqlConnection(@"Data Source=LAPTOP-HA348VVB\SQLEXPRESS;Initial Catalog=users;Integrated Security=True");
+        SqlConnection sqlConnection = new Connect().sqlconnection;
 
         private void load()
         {
@@ -157,7 +157,7 @@ namespace Final_Project
                 else
                 {
                     sqlConnection.Open();
-                    SqlCommand cmd = new SqlCommand("update categories set name_cate = '" + namecate.Text + "'", sqlConnection);
+                    SqlCommand cmd = new SqlCommand("update categories set name_cate = '" + namecate.Text + "' where ID_cate = '" + idcate.Text + "'", sqlConnection);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Cập nhật thông tin danh mục thành công");
                     sqlConnection.Close();

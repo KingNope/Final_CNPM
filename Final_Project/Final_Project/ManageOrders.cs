@@ -21,7 +21,7 @@ namespace Final_Project
         private string _namecustom, _address, _phonecustom, _nameproduct, amount_pro, resum, date, remethod, restatus_p, restatus_order;
 
 
-        SqlConnection sqlConnection = new SqlConnection(@"Data Source=LAPTOP-HA348VVB\SQLEXPRESS;Initial Catalog=users;Integrated Security=True");
+        SqlConnection sqlConnection = new Connect().sqlconnection;
 
         private void load()
         {

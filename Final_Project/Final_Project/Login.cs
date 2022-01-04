@@ -18,7 +18,7 @@ namespace Final_Project
             InitializeComponent();
         }
 
-        SqlConnection sqlConnection = new SqlConnection(@"Data Source=LAPTOP-HA348VVB\SQLEXPRESS;Initial Catalog=users;Integrated Security=True");
+        SqlConnection sqlConnection = new Connect().sqlconnection;
         private void Login_Load(object sender, EventArgs e)
         {
 
