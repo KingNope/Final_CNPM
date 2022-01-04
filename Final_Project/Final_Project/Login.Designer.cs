@@ -31,18 +31,21 @@ namespace Final_Project
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Xacnhan = new System.Windows.Forms.Button();
             this.Password = new System.Windows.Forms.TextBox();
             this.Edt_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.MintCream;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.Xacnhan);
             this.panel1.Controls.Add(this.Password);
             this.panel1.Controls.Add(this.Edt_name);
@@ -52,23 +55,34 @@ namespace Final_Project
             this.panel1.Size = new System.Drawing.Size(420, 540);
             this.panel1.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.ErrorImage = null;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(166, 119);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(150, 95);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // Xacnhan
             // 
             this.Xacnhan.BackColor = System.Drawing.Color.SlateGray;
             this.Xacnhan.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Xacnhan.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Xacnhan.Location = new System.Drawing.Point(107, 374);
+            this.Xacnhan.Location = new System.Drawing.Point(107, 438);
             this.Xacnhan.Name = "Xacnhan";
             this.Xacnhan.Size = new System.Drawing.Size(209, 40);
             this.Xacnhan.TabIndex = 3;
             this.Xacnhan.Text = "XÁC NHẬN";
             this.Xacnhan.UseVisualStyleBackColor = false;
+            this.Xacnhan.Click += new System.EventHandler(this.Xacnhan_Click);
             // 
             // Password
             // 
             this.Password.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Password.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.Password.Location = new System.Drawing.Point(49, 254);
+            this.Password.Location = new System.Drawing.Point(49, 337);
             this.Password.Name = "Password";
             this.Password.Size = new System.Drawing.Size(325, 34);
             this.Password.TabIndex = 2;
@@ -80,7 +94,7 @@ namespace Final_Project
             // 
             this.Edt_name.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Edt_name.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.Edt_name.Location = new System.Drawing.Point(49, 183);
+            this.Edt_name.Location = new System.Drawing.Point(49, 269);
             this.Edt_name.Name = "Edt_name";
             this.Edt_name.Size = new System.Drawing.Size(325, 34);
             this.Edt_name.TabIndex = 1;
@@ -92,7 +106,7 @@ namespace Final_Project
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(125, 61);
+            this.label1.Location = new System.Drawing.Point(125, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 41);
             this.label1.TabIndex = 0;
@@ -126,6 +140,7 @@ namespace Final_Project
             this.Load += new System.EventHandler(this.Login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,6 +154,7 @@ namespace Final_Project
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Xacnhan;
         private System.Windows.Forms.TextBox Password;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

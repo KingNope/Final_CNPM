@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Final_Project
 {
@@ -17,6 +18,7 @@ namespace Final_Project
             InitializeComponent();
         }
 
+        SqlConnection sqlConnection = new SqlConnection(@"Data Source=LAPTOP-HA348VVB\SQLEXPRESS;Initial Catalog=users;Integrated Security=True");
         private void Login_Load(object sender, EventArgs e)
         {
 
@@ -57,6 +59,32 @@ namespace Final_Project
                 Password.Text = "";
                 Password.ForeColor = Color.Black;
                 Password.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void Xacnhan_Click(object sender, EventArgs e)
+        {
+            if (Edt_name.Text == "" | Password.Text == "")
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin đăng nhập");
+            }
+            else
+            {
+                sqlConnection.Open();
+                SqlDataAdapter sqlData = new SqlDataAdapter("select Count(*) from tb_user where name_login = '" + Edt_name.Text + "' and _password = '" + Password.Text + "'", sqlConnection);
+                DataTable data = new DataTable();
+                sqlData.Fill(data);
+                if (data.Rows[0][0].ToString() == "1")
+                {
+                    Home home = new Home();
+                    home.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Thông tin đăng nhập không chính xác");
+                }
+                sqlConnection.Close();
             }
         }
     }
