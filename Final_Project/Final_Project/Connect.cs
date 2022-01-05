@@ -11,7 +11,7 @@ namespace Final_Project
         private SqlConnection sqlConnection;
         public Connect()
         {
-           sqlConnection = new SqlConnection(@"Data Source=LAPTOP-HA348VVB\SQLEXPRESS;Initial Catalog=users;Integrated Security=True");
+           sqlConnection = new SqlConnection(@"Data Source=LAPTOP-HA348VVB\SQLEXPRESS;Initial Catalog=db_project;Integrated Security=True");
         }
         
         public SqlConnection sqlconnection

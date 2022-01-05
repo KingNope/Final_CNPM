@@ -25,7 +25,7 @@ namespace Final_Project
             try
             {
                 sqlConnection.Open();
-                string myquery = "select ID_product,name_product,image,descrip,quality,price,category,date from products";
+                string myquery = "select ID,name_product,image,descrip,quality,price,category,date from products";
                 SqlCommand com = new SqlCommand(myquery, sqlConnection);
                 com.CommandType = CommandType.Text;
                 SqlDataAdapter da = new SqlDataAdapter(com);

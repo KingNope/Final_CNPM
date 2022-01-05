@@ -72,7 +72,7 @@ namespace Final_Project
             try
             {
                 sqlConnection.Open();
-                string myquery = "select ID_product,name_product,image,descrip,quality,price,category,date from products where category = '" + list_search.SelectedValue.ToString() + "'";
+                string myquery = "select ID,name_product,image,descrip,quality,price,category,date from products where category = '" + list_search.SelectedValue.ToString() + "'";
                 SqlCommand com = new SqlCommand(myquery, sqlConnection);
                 com.CommandType = CommandType.Text;
                 SqlDataAdapter da = new SqlDataAdapter(com);
@@ -92,7 +92,7 @@ namespace Final_Project
             try
             {
                 sqlConnection.Open();
-                string myquery = "select ID_product,name_product,image,descrip,quality,price,category,date from products";
+                string myquery = "select ID,name_product,image,descrip,quality,price,category,date from products";
                 SqlCommand com = new SqlCommand(myquery, sqlConnection);
                 com.CommandType = CommandType.Text;
                 SqlDataAdapter da = new SqlDataAdapter(com);
@@ -144,7 +144,7 @@ namespace Final_Project
                 {
                     MessageBox.Show("Vui lòng điền đầy đủ thông tin sản phẩm");
                 }
-                else if (!IsNumeric(quaty.Text.ToString()) | !IsNumeric(_price.Text.ToString()))
+                else if (!IsNumeric(quaty.Text.ToString()) | !IsNumeric(_price.Text.ToString()) | !IsNumeric(idproduct.Text))
                 {
                     MessageBox.Show("Vui lòng điền chính xác thông tin sản phẩm");
                 }
@@ -154,7 +154,7 @@ namespace Final_Project
                     if (list_product.Rows[0].Cells[0].Value != null)
                     {
                         sqlConnection.Open();
-                        SqlCommand checkID = new SqlCommand("SELECT * FROM products WHERE ID_product = '" + idproduct.Text + "'", sqlConnection);
+                        SqlCommand checkID = new SqlCommand("SELECT * FROM products WHERE ID = '" + idproduct.Text + "'", sqlConnection);
                         SqlDataReader reader = checkID.ExecuteReader();
                         if (reader.HasRows)
                         {
@@ -222,7 +222,7 @@ namespace Final_Project
                     else
                     {
                         sqlConnection.Open();
-                        SqlCommand cmd = new SqlCommand("delete from products where ID_product = '" + idproduct.Text + "'", sqlConnection);
+                        SqlCommand cmd = new SqlCommand("delete from products where ID = '" + idproduct.Text + "'", sqlConnection);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Xóa sản phẩm thành công");
                         sqlConnection.Close();
@@ -265,7 +265,7 @@ namespace Final_Project
                 else
                 {
                     sqlConnection.Open();
-                    SqlCommand cmd = new SqlCommand("update products set name_product = '" + nameproduct.Text + "',image = '" + _image.Text + "',descrip = N'" + _descrip.Text + "',quality = '" + quaty.Text + "',price = '" + _price.Text + "',category = '" + categories.SelectedValue.ToString() + "',date = '" + date_time.Value.ToString("MM/dd/yyyy") + "' where ID_product = '" + idproduct.Text + "'", sqlConnection);
+                    SqlCommand cmd = new SqlCommand("update products set name_product = '" + nameproduct.Text + "',image = '" + _image.Text + "',descrip = N'" + _descrip.Text + "',quality = '" + quaty.Text + "',price = '" + _price.Text + "',category = '" + categories.SelectedValue.ToString() + "',date = '" + date_time.Value.ToString("MM/dd/yyyy") + "' where ID = '" + idproduct.Text + "'", sqlConnection);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Cập nhật thông tin sản phẩm thành công");
                     sqlConnection.Close();
