@@ -134,21 +134,6 @@ namespace Final_Project
             }
         }
 
-        private string RandomString(bool lowerCase)
-        {
-            StringBuilder builder = new StringBuilder();
-            Random random = new Random();
-            char ch;
-            for (int i = 0; i < 6; i++)
-            {
-                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
-                builder.Append(ch);
-            }
-            if (lowerCase)
-                return builder.ToString().ToLower();
-            return builder.ToString();
-        }
-
         private bool IsNumeric(string value)
         {
             try
@@ -183,17 +168,12 @@ namespace Final_Project
                 {
                     sqlConnection.Open();
 
-                    if(idorder.Text == "")
-                    {
-                        idorder.Text = RandomString(true);
-                    }
-
                     SqlDataAdapter sqlData = new SqlDataAdapter("select * from products where name_product = '" + nameproduct.SelectedValue.ToString() + "'", sqlConnection);
                     DataTable data = new DataTable();
                     sqlData.Fill(data);
                     double count = double.Parse(amount_product.Text) * double.Parse(data.Rows[0][5].ToString());
                     sum_p.Text = count.ToString();
-                    SqlCommand cmd = new SqlCommand("update customers set name_custom = N'" + namecustom.Text + "',address_custom = N'" + address.Text + "',phone_number = '" + phone_custom.Text + "',product_name = '" + nameproduct.SelectedValue.ToString() + "',amount = '" + amount_product.Text + "',sum_price = '" + sum_p.Text + "',date_order = '" + date_time.Value.ToString("MM/dd/yyyy") + "',method = '" + method_product.SelectedItem.ToString() + "',ID_order = '" + idorder.Text + "',status = N'" + status_p.SelectedItem.ToString() + "',status_order = N'" + status_or.SelectedItem.ToString() + "' where ID_custom = '" + idcustom.Text + "'", sqlConnection);
+                    SqlCommand cmd = new SqlCommand("update customers set name_custom = N'" + namecustom.Text + "',address_custom = N'" + address.Text + "',phone_number = '" + phone_custom.Text + "',product_name = '" + nameproduct.SelectedValue.ToString() + "',amount = '" + amount_product.Text + "',sum_price = '" + sum_p.Text + "',date_order = '" + date_time.Value.ToString("MM/dd/yyyy") + "',method = '" + method_product.SelectedItem.ToString() + "',status = N'" + status_p.SelectedItem.ToString() + "',status_order = N'" + status_or.SelectedItem.ToString() + "' where ID_custom = '" + idcustom.Text + "'", sqlConnection);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Cập nhật thông tin đơn hàng thành công");
                     sqlConnection.Close();

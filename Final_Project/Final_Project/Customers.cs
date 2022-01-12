@@ -40,6 +40,21 @@ namespace Final_Project
             }
         }
 
+        private string RandomString(bool lowerCase)
+        {
+            StringBuilder builder = new StringBuilder();
+            Random random = new Random();
+            char ch;
+            for (int i = 0; i < 6; i++)
+            {
+                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                builder.Append(ch);
+            }
+            if (lowerCase)
+                return builder.ToString().ToLower();
+            return builder.ToString();
+        }
+
         private void Add_Click(object sender, EventArgs e)
         {
             try
@@ -69,7 +84,7 @@ namespace Final_Project
                             address.Text = "";
                             phone_custom.Text = "";
                             count.Text = "0";
-                            Sum.Text = "0.000000000000";
+                            Sum.Text = "0.0000000";
                             idcustom.ReadOnly = false;
                         }
                         sqlConnection.Close();
@@ -77,7 +92,7 @@ namespace Final_Project
                     if (check)
                     {
                         sqlConnection.Open();
-                        SqlCommand cmd = new SqlCommand("insert into customers values('" + idcustom.Text + "',N'" + namecustom.Text + "',N'" + address.Text + "','" + phone_custom.Text + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "')", sqlConnection);
+                        SqlCommand cmd = new SqlCommand("insert into customers values('" + idcustom.Text + "',N'" + namecustom.Text + "',N'" + address.Text + "','" + phone_custom.Text + "','" + null + "','" + null + "','" + null + "','" + null + "','" + null + "','" + RandomString(true) + "','" + null + "','" + null + "')", sqlConnection);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Thêm khách hàng thành công");
                         sqlConnection.Close();
@@ -87,7 +102,7 @@ namespace Final_Project
                         address.Text = "";
                         phone_custom.Text = "";
                         count.Text = "0";
-                        Sum.Text = "0.000000000000";
+                        Sum.Text = "0.0000000";
                     }
                 }
             }
@@ -126,7 +141,7 @@ namespace Final_Project
                             address.Text = "";
                             phone_custom.Text = "";
                             count.Text = "0";
-                            Sum.Text = "0.000000000000";
+                            Sum.Text = "0.0000000";
                             idcustom.ReadOnly = false;
                             Delete.Enabled = false;
                             Change.Enabled = false;
@@ -146,7 +161,7 @@ namespace Final_Project
                             address.Text = "";
                             phone_custom.Text = "";
                             count.Text = "0";
-                            Sum.Text = "0.000000000000";
+                            Sum.Text = "0.0000000";
                             idcustom.ReadOnly = false;
                             Delete.Enabled = false;
                             Change.Enabled = false;
@@ -203,7 +218,7 @@ namespace Final_Project
                     address.Text = "";
                     phone_custom.Text = "";
                     count.Text = "0";
-                    Sum.Text = "0.000000000000";
+                    Sum.Text = "0.0000000";
                     idcustom.ReadOnly = false;
                     Delete.Enabled = false;
                     Change.Enabled = false;
@@ -227,7 +242,7 @@ namespace Final_Project
             Add.Enabled = true;
             Change.Enabled = false;
             count.Text = "0";
-            Sum.Text = "0.000000000000";
+            Sum.Text = "0.0000000";
         }
 
         private void Back_Click(object sender, EventArgs e)

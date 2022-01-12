@@ -63,8 +63,8 @@ namespace Final_Project
             this.count = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.Sum = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.Sum = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.list_customer)).BeginInit();
             this.panel3.SuspendLayout();
@@ -385,18 +385,6 @@ namespace Final_Project
             this.panel4.Size = new System.Drawing.Size(177, 79);
             this.panel4.TabIndex = 39;
             // 
-            // Sum
-            // 
-            this.Sum.AutoSize = true;
-            this.Sum.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Sum.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Sum.Location = new System.Drawing.Point(18, 41);
-            this.Sum.Name = "Sum";
-            this.Sum.Size = new System.Drawing.Size(145, 23);
-            this.Sum.TabIndex = 34;
-            this.Sum.Text = "0.000000000000";
-            this.Sum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -407,6 +395,17 @@ namespace Final_Project
             this.label6.Size = new System.Drawing.Size(69, 19);
             this.label6.TabIndex = 32;
             this.label6.Text = "Tổng tiền";
+            // 
+            // Sum
+            // 
+            this.Sum.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Sum.ForeColor = System.Drawing.Color.MintCream;
+            this.Sum.Location = new System.Drawing.Point(16, 41);
+            this.Sum.Name = "Sum";
+            this.Sum.Size = new System.Drawing.Size(145, 23);
+            this.Sum.TabIndex = 35;
+            this.Sum.Text = "0.0000000";
+            this.Sum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Customers
             // 
