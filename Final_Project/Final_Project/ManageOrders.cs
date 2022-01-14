@@ -50,36 +50,13 @@ namespace Final_Project
             this.Hide();
         }
 
-        private void fillcate()
-        {
-            string query = "select * from products";
-            SqlCommand cmd = new SqlCommand(query, sqlConnection);
-            SqlDataReader reader;
-            try
-            {
-                sqlConnection.Open();
-                DataTable dt = new DataTable();
-                dt.Columns.Add("name_product", typeof(string));
-                reader = cmd.ExecuteReader();
-                dt.Load(reader);
-                nameproduct.ValueMember = "name_product";
-                nameproduct.DataSource = dt;
-                sqlConnection.Close();
-            }
-            catch
-            {
-                MessageBox.Show("Đổ dữ liệu thất bại");
-            }
-        }
+     
 
         private void ManageOrders_Load(object sender, EventArgs e)
         {
             load();
-            fillcate();
             Delete.Enabled = false;
             Change.Enabled = false;
-            sum_p.ReadOnly = true;
-            nameproduct.SelectedValue = "";
             status_p.SelectedItem = "Chọn trạng thái";
             method_product.SelectedItem = "Chọn phương thức";
             status_or.SelectedItem = "Chọn tình trạng";
@@ -95,7 +72,7 @@ namespace Final_Project
                 }
                 else
                 {
-                    if (_namecustom != namecustom.Text | _address != address.Text | _phonecustom != phone_custom.Text | _nameproduct != nameproduct.SelectedValue.ToString() | amount_pro != amount_product.Text | resum != sum_p.Text | date != date_time.Value.ToString("MM/dd/yyyy") | restatus_p != status_p.SelectedItem.ToString() | restatus_order != status_or.SelectedItem.ToString() | remethod != method_product.SelectedItem.ToString())
+                    if (_namecustom != namecustom.Text | _address != address.Text | _phonecustom != phone_custom.Text | _nameproduct != nameproduct.Text | amount_pro != amount_product.Text | resum != sum_p.Text | date != date_time.Value.ToString("MM/dd/yyyy") | restatus_p != status_p.SelectedItem.ToString() | restatus_order != status_or.SelectedItem.ToString() | remethod != method_product.SelectedItem.ToString())
                     {
                         MessageBox.Show("Vui lòng không chỉnh sửa thông tin khi xóa");
                     }
@@ -111,7 +88,7 @@ namespace Final_Project
                         namecustom.Text = "";
                         address.Text = "";
                         phone_custom.Text = "";
-                        nameproduct.SelectedValue = "";
+                        nameproduct.Text = "";
                         amount_product.Text = "";
                         sum_p.Text = "";
                         date_time.Value = DateTime.Now;
@@ -156,7 +133,7 @@ namespace Final_Project
         {
             try
             {
-                if (idcustom.Text == "" | namecustom.Text == "" | address.Text == "" | phone_custom.Text == "" | nameproduct.SelectedValue == null | amount_product.Text == "" | sum_p.Text == "" | method_product.SelectedItem == "Chọn phương thức" | status_p.SelectedItem == "Chọn trạng thái" | status_or.SelectedItem == "Chọn tình trạng")
+                if (idcustom.Text == "" | namecustom.Text == "" | address.Text == "" | phone_custom.Text == "" | nameproduct.Text == "" | amount_product.Text == "" | sum_p.Text == "" | method_product.SelectedItem == "Chọn phương thức" | status_p.SelectedItem == "Chọn trạng thái" | status_or.SelectedItem == "Chọn tình trạng")
                 {
                     MessageBox.Show("Vui lòng điền đầy đủ thông tin đơn hàng");
                 }
@@ -167,13 +144,7 @@ namespace Final_Project
                 else
                 {
                     sqlConnection.Open();
-
-                    SqlDataAdapter sqlData = new SqlDataAdapter("select * from products where name_product = '" + nameproduct.SelectedValue.ToString() + "'", sqlConnection);
-                    DataTable data = new DataTable();
-                    sqlData.Fill(data);
-                    double count = double.Parse(amount_product.Text) * double.Parse(data.Rows[0][5].ToString());
-                    sum_p.Text = count.ToString();
-                    SqlCommand cmd = new SqlCommand("update customers set name_custom = N'" + namecustom.Text + "',address_custom = N'" + address.Text + "',phone_number = '" + phone_custom.Text + "',product_name = '" + nameproduct.SelectedValue.ToString() + "',amount = '" + amount_product.Text + "',sum_price = '" + sum_p.Text + "',date_order = '" + date_time.Value.ToString("MM/dd/yyyy") + "',method = '" + method_product.SelectedItem.ToString() + "',status = N'" + status_p.SelectedItem.ToString() + "',status_order = N'" + status_or.SelectedItem.ToString() + "' where ID_custom = '" + idcustom.Text + "'", sqlConnection);
+                    SqlCommand cmd = new SqlCommand("update customers set name_custom = N'" + namecustom.Text + "',address_custom = N'" + address.Text + "',phone_number = '" + phone_custom.Text + "',product_name = '" + nameproduct.Text + "',amount = '" + amount_product.Text + "',sum_price = '" + sum_p.Text + "',date_order = '" + date_time.Value.ToString("MM/dd/yyyy") + "',method = '" + method_product.SelectedItem.ToString() + "',status = N'" + status_p.SelectedItem.ToString() + "',status_order = N'" + status_or.SelectedItem.ToString() + "' where ID_custom = '" + idcustom.Text + "'", sqlConnection);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Cập nhật thông tin đơn hàng thành công");
                     sqlConnection.Close();
@@ -182,7 +153,7 @@ namespace Final_Project
                     namecustom.Text = "";
                     address.Text = "";
                     phone_custom.Text = "";
-                    nameproduct.SelectedValue = "";
+                    nameproduct.Text = "";
                     amount_product.Text = "";
                     sum_p.Text = "";
                     date_time.Value = DateTime.Now;
@@ -210,7 +181,7 @@ namespace Final_Project
             namecustom.Text = "";
             address.Text = "";
             phone_custom.Text = "";
-            nameproduct.SelectedValue = "";
+            nameproduct.Text = "";
             amount_product.Text = "";
             sum_p.Text = "";
             date_time.Value = DateTime.Now;
@@ -233,7 +204,7 @@ namespace Final_Project
             e.Graphics.DrawString("Địa chỉ: " + address.Text, new Font("Century", 20, FontStyle.Regular), Brushes.Black, new Point(80, 180));
             e.Graphics.DrawString("Số điện thoại: " + phone_custom.Text, new Font("Century", 20, FontStyle.Regular), Brushes.Black, new Point(80, 220));
             e.Graphics.DrawString("ID đơn hàng: " + idorder.Text, new Font("Century", 20, FontStyle.Regular), Brushes.Black, new Point(80, 260));
-            e.Graphics.DrawString("Tên sản phẩm: " + nameproduct.SelectedValue.ToString(), new Font("Century", 20, FontStyle.Regular), Brushes.Black, new Point(80, 300));
+            e.Graphics.DrawString("Tên sản phẩm: " + nameproduct.Text, new Font("Century", 20, FontStyle.Regular), Brushes.Black, new Point(80, 300));
             e.Graphics.DrawString("Số lượng: " + amount_product.Text, new Font("Century", 20, FontStyle.Regular), Brushes.Black, new Point(80, 340));
             e.Graphics.DrawString("Tổng tiền: " + sum_p.Text + " VND", new Font("Century", 20, FontStyle.Regular), Brushes.Black, new Point(80, 380));
             e.Graphics.DrawString("Ngày đặt hàng: " + date_time.Value.ToString("MM/dd/yyyy"), new Font("Century", 20, FontStyle.Regular), Brushes.Black, new Point(80, 420));
@@ -253,7 +224,7 @@ namespace Final_Project
             _address = row.Cells[2].Value.ToString().Trim();
             phone_custom.Text = row.Cells[3].Value.ToString().Trim();
             _phonecustom = row.Cells[3].Value.ToString().Trim();
-            nameproduct.SelectedValue = row.Cells[4].Value.ToString().Trim();
+            nameproduct.Text = row.Cells[4].Value.ToString().Trim();
             _nameproduct = row.Cells[4].Value.ToString().Trim();
             amount_product.Text = row.Cells[5].Value.ToString().Trim();
             amount_pro = row.Cells[5].Value.ToString().Trim();
@@ -280,7 +251,7 @@ namespace Final_Project
         private void print_Click(object sender, EventArgs e)
         {
           
-            if (idcustom.Text == "" | namecustom.Text == "" | address.Text == "" | phone_custom.Text == "" | nameproduct.SelectedValue == null | amount_product.Text == "" | sum_p.Text == "" | method_product.SelectedItem == "Chọn phương thức" | status_p.SelectedItem == "Chọn trạng thái" | status_or.SelectedItem == "Chọn tình trạng")
+            if (idcustom.Text == "" | namecustom.Text == "" | address.Text == "" | phone_custom.Text == "" | nameproduct.Text == "" | amount_product.Text == "" | sum_p.Text == "" | method_product.SelectedItem == "Chọn phương thức" | status_p.SelectedItem == "Chọn trạng thái" | status_or.SelectedItem == "Chọn tình trạng")
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin đơn hàng");
             }
@@ -293,7 +264,7 @@ namespace Final_Project
                 string selected_method = method_product.SelectedItem.ToString();
                 string selected_status_p = status_p.SelectedItem.ToString();
                 string selected_status_or = status_or.SelectedItem.ToString();
-                if (_namecustom != namecustom.Text | _address != address.Text | _phonecustom != phone_custom.Text | _nameproduct != nameproduct.SelectedValue.ToString() | amount_pro != amount_product.Text | resum != sum_p.Text | date != date_time.Value.ToString("MM/dd/yyyy") | !restatus_p.Equals(selected_status_p) | !restatus_order.Equals(selected_status_or) | !remethod.Equals(selected_method))
+                if (_namecustom != namecustom.Text | _address != address.Text | _phonecustom != phone_custom.Text | _nameproduct != nameproduct.Text | amount_pro != amount_product.Text | resum != sum_p.Text | date != date_time.Value.ToString("MM/dd/yyyy") | !restatus_p.Equals(selected_status_p) | !restatus_order.Equals(selected_status_or) | !remethod.Equals(selected_method))
                 {
                     MessageBox.Show("Vui lòng không chỉnh sửa thông tin khi in phiếu xuất");
                 }

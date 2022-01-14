@@ -91,8 +91,8 @@ namespace Final_Project
             this.Back = new System.Windows.Forms.Button();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.nameproduct = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.nameproduct = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.list_customer)).BeginInit();
             this.SuspendLayout();
@@ -545,7 +545,7 @@ namespace Final_Project
             this.status_or.FormattingEnabled = true;
             this.status_or.Items.AddRange(new object[] {
             "Chọn tình trạng",
-            "Chưa giao ",
+            "Chưa giao",
             "Đang giao",
             "Đã giao"});
             this.status_or.Location = new System.Drawing.Point(208, 729);
@@ -648,18 +648,6 @@ namespace Final_Project
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // nameproduct
-            // 
-            this.nameproduct.BackColor = System.Drawing.Color.AliceBlue;
-            this.nameproduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.nameproduct.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
-            this.nameproduct.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.nameproduct.FormattingEnabled = true;
-            this.nameproduct.Location = new System.Drawing.Point(148, 430);
-            this.nameproduct.Name = "nameproduct";
-            this.nameproduct.Size = new System.Drawing.Size(240, 31);
-            this.nameproduct.TabIndex = 87;
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -671,14 +659,22 @@ namespace Final_Project
             this.label18.TabIndex = 88;
             this.label18.Text = "VND";
             // 
+            // nameproduct
+            // 
+            this.nameproduct.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold);
+            this.nameproduct.Location = new System.Drawing.Point(148, 430);
+            this.nameproduct.Name = "nameproduct";
+            this.nameproduct.Size = new System.Drawing.Size(257, 30);
+            this.nameproduct.TabIndex = 89;
+            // 
             // ManageOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1328, 799);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.nameproduct);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.Back);
             this.Controls.Add(this.print);
             this.Controls.Add(this.Clear);
@@ -778,7 +774,7 @@ namespace Final_Project
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_order;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.DataGridViewTextBoxColumn status_order;
-        private System.Windows.Forms.ComboBox nameproduct;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox nameproduct;
     }
 }
