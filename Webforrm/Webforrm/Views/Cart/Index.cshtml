@@ -1,0 +1,169 @@
+﻿@model IEnumerable<Webforrm.Models.CartModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    double TotalAmount = 0;
+    double TotalAmount2 = 0;
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+    $(function () {
+        $("#removecart").click(function () {
+            var model = {};
+            //lấy id sản phẩm
+            model.Id = $("#productid").val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Remove", "Cart")',
+                data:  JSON.stringify(model) ,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function () {
+                    $('#CartCount').text(@Session["count"] - 1);
+                    $("#product-" + model.Id).remove();
+                },
+                error: function () {
+                    alert("Lỗi trong khi thêm vào giỏ hàng!");
+                }
+            });
+            return false;
+        });
+    });
+    $(function () {
+        $("#payment").click(function () {
+            if ($("#selected").val() == "Chọn phương thức thanh toán") {
+                alert("Vui lòng chọn hình thức thanh toán");
+            }
+            else
+            {
+                var model = {};
+                model.method = $("#selected").val();
+                 $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Payment", "Cart")',
+                    data:  JSON.stringify(model),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                     success: function () {
+                         window.location= '@Url.Action("Index","Paymet")';
+                    },
+                    error: function () {
+                        alert("Lỗi trong khi thêm vào giỏ hàng!");
+                    }
+                });
+            }
+            return false;
+        });
+    });
+
+</script>
+<!-- Breadcrumb Section Begin -->
+
+
+
+<section class="breadcrumb-section set-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+             
+                    <h2>Shopping Cart</h2>
+                   
+                
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Shoping Cart Section Begin -->
+<section class="shoping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shoping__cart__table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="shoping__product">Products</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    TotalAmount = (double)item.Product.price * item.Quantity;
+                                    TotalAmount2 += TotalAmount;
+                                    <tr id="product-@item.Product.ID">
+                                        <td class="shoping__cart__item">
+                                            <img src="~/Fonts/img/@item.Product.image" width="320" height="215"/>
+                                            <h5>@item.Product.name_product</h5>
+                                        </td>
+
+                                        <td class="shoping__cart__price">
+                                            @item.Product.price VND
+                                        </td>
+                                        <td class="shoping__cart__quantity">
+                                            <div class="quantity">
+                                                <div class="pro-qty">
+                                                    @item.Quantity
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="shoping__cart__total">
+                                            @TotalAmount VND
+                                        </td>
+                                        <td class="shoping__cart__item__close">
+                                            <input type="hidden" value="@item.Product.ID" id="productid" />
+                                            <span class="icon_close" id="removecart"></span>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="shoping__cart__btns">
+                    <a href="@Url.Action("Index", "Home")" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                    @*<a href="#" class="primary-btn cart-btn cart-btn-right">
+                        <span  class="icon_loading"></span>
+                        Upadate Cart
+                    </a>*@
+                </div>
+            </div>
+            <div class="col-lg-6">
+
+            </div>
+            <div class="col-lg-6">
+                <div class="shoping__checkout">
+                    <h5>Cart Total</h5>
+                    <ul>
+                        <li>Total <span>@TotalAmount2 VND</span></li>
+                    </ul>
+                    <select class="form-control" id="selected" >
+                        <option>Chọn phương thức thanh toán</option>
+                        <option>Thanh toán khi nhận hàng</option>
+                        <option>Thanh toán bằng Momo</option>
+                    </select>
+                    </div>
+                    @if (Session["count"] != null | System.Convert.ToInt32(Session["count"]) !=0)
+                    {
+                        <a href="" id="payment" class="primary-btn">PROCEED TO CHECKOUT</a>
+                    }
+                </div>
+            </div>
+        </div>
+
+</section>
+
+<!-- Shoping Cart Section End -->

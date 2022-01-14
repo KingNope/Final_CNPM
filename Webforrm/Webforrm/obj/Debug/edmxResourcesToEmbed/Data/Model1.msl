@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_projectModelStoreContainer" CdmEntityContainer="Project">
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="db_projectModel.customer">
+        <MappingFragment StoreEntitySet="customers">
+          <ScalarProperty Name="ID_custom" ColumnName="ID_custom" />
+          <ScalarProperty Name="name_custom" ColumnName="name_custom" />
+          <ScalarProperty Name="address_custom" ColumnName="address_custom" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="sum_price" ColumnName="sum_price" />
+          <ScalarProperty Name="date_order" ColumnName="date_order" />
+          <ScalarProperty Name="method" ColumnName="method" />
+          <ScalarProperty Name="ID_order" ColumnName="ID_order" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="status_order" ColumnName="status_order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="db_projectModel.product">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="name_product" ColumnName="name_product" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
+          <ScalarProperty Name="quality" ColumnName="quality" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_user">
+      <EntityTypeMapping TypeName="db_projectModel.tb_user">
+        <MappingFragment StoreEntitySet="tb_user">
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="name_login" ColumnName="name_login" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="C_password" ColumnName="_password" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="db_projectModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Sodienthoai" ColumnName="Sodienthoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="db_projectModel.category">
+        <MappingFragment StoreEntitySet="categories">
+          <ScalarProperty Name="ID_cate" ColumnName="ID_cate" />
+          <ScalarProperty Name="name_cate" ColumnName="name_cate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

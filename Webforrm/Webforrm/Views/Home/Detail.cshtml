@@ -1,0 +1,81 @@
+﻿@model Webforrm.Data.product
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#addtocart").click(function () {
+            if (@Model.quality < $("#ipQuantity").val()){
+                alert("Vui lòng chọn số lượng đơn hàng nhỏ hơn");
+            }
+            else {
+                var model = {};
+                //lấy id sản phẩm
+                model.ID = @Model.ID;
+                // lấy số lượng đặt hàng
+                model.Quantity = $("#ipQuantity").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddToCart", "Cart")',
+                    data: JSON.stringify(model),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function () {
+                        alert("Thêm giỏ hàng thành công!")
+                        $('#CartCount').text(@Session["count"] + 1);
+                    },
+                    error: function () {
+                        alert("Lỗi trong khi thêm vào giỏ hàng!");
+                    }
+                }); 
+            }
+            return false;
+        });
+    });
+</script>
+<!-- Product Details Section Begin -->
+<section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__pic">
+                    <div class="product__details__pic__item">
+                        <img class="product__details__pic__item--large"
+                             src="~/Fonts/img/@Model.image" alt="">
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product__details__text">
+                    <h3>@Model.name_product</h3>
+
+                    <div class="product__details__price">@Model.price VND</div>
+                    <p>
+                        @Model.descrip
+                    </p>
+                    <div class="product__details__quantity">
+                        <div class="quantity">
+                            <div class="pro-qty">
+                                <input type="text" id="ipQuantity" value="1">
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" id="addtocart" class="primary-btn">ADD TO CARD</a>
+
+                    <ul>
+                        <li><b>Số lượng sản phẩm</b> <span>@Model.quality</span></li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Product Details Section End -->
