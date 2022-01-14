@@ -95,16 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />
-    <Content Include="Data\Project.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Project.edmx</DependentUpon>
-      <LastGenOutput>Project.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Data\Project.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Project.edmx</DependentUpon>
-      <LastGenOutput>Project.cs</LastGenOutput>
-    </Content>
     <Content Include="Fonts\css\bootstrap.min.css" />
     <Content Include="Fonts\css\elegant-icons.css" />
     <Content Include="Fonts\css\font-awesome.min.css" />
@@ -141,36 +131,6 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaymetController.cs" />
-    <Compile Include="Data\category.cs">
-      <DependentUpon>Project.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\customer.cs">
-      <DependentUpon>Project.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\product.cs">
-      <DependentUpon>Project.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Project.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Project.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Project.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Project.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Project.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Project.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\tb_user.cs">
-      <DependentUpon>Project.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\User.cs">
-      <DependentUpon>Project.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -187,13 +147,6 @@
     <Content Include="Fonts\fonts\fontawesome-webfont.woff" />
     <Content Include="Fonts\fonts\fontawesome-webfont.woff2" />
     <Content Include="Fonts\fonts\FontAwesome.otf" />
-    <EntityDeploy Include="Data\Project.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Project.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Data\Project.edmx.diagram">
-      <DependentUpon>Project.edmx</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -213,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
