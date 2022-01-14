@@ -79,7 +79,7 @@ namespace Final_Project
                     else
                     {
                         sqlConnection.Open();
-                        SqlCommand cmd = new SqlCommand("delete from customers where ID_custom = '" + idcustom.Text + "'", sqlConnection);
+                        SqlCommand cmd = new SqlCommand("delete from customers where ID_order = '" + idorder.Text + "'", sqlConnection);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Xóa đơn hàng thành công");
                         sqlConnection.Close();
@@ -144,7 +144,7 @@ namespace Final_Project
                 else
                 {
                     sqlConnection.Open();
-                    SqlCommand cmd = new SqlCommand("update customers set name_custom = N'" + namecustom.Text + "',address_custom = N'" + address.Text + "',phone_number = '" + phone_custom.Text + "',product_name = '" + nameproduct.Text + "',amount = '" + amount_product.Text + "',sum_price = '" + sum_p.Text + "',date_order = '" + date_time.Value.ToString("MM/dd/yyyy") + "',method = '" + method_product.SelectedItem.ToString() + "',status = N'" + status_p.SelectedItem.ToString() + "',status_order = N'" + status_or.SelectedItem.ToString() + "' where ID_custom = '" + idcustom.Text + "'", sqlConnection);
+                    SqlCommand cmd = new SqlCommand("update customers set name_custom = N'" + namecustom.Text + "',address_custom = N'" + address.Text + "',phone_number = '" + phone_custom.Text + "',product_name = '" + nameproduct.Text + "',amount = '" + amount_product.Text + "',sum_price = '" + sum_p.Text + "',date_order = '" + date_time.Value.ToString("MM/dd/yyyy") + "',method = '" + method_product.SelectedItem.ToString() + "',status = N'" + status_p.SelectedItem.ToString() + "',status_order = N'" + status_or.SelectedItem.ToString() + "' where ID_order = '" + idorder.Text + "'", sqlConnection);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Cập nhật thông tin đơn hàng thành công");
                     sqlConnection.Close();
