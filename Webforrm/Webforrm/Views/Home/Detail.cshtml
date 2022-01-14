@@ -9,26 +9,31 @@
 <script type="text/javascript">
     $(function () {
         $("#addtocart").click(function () {
-            var model = {};
-            //lấy id sản phẩm
-            model.ID = @Model.ID;
-            // lấy số lượng đặt hàng
-            model.Quantity = $("#ipQuantity").val();
-       
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("AddToCart", "Cart")',
-                data:  JSON.stringify(model) ,
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function () {
-                    alert("Thêm giỏ hàng thành công!")
-                    $('#CartCount').text(@Session["count"] + 1);
-                },
-                error: function () {
-                    alert("Lỗi trong khi thêm vào giỏ hàng!");
-                }
-            });
+            if (@Model.quality < $("#ipQuantity").val()){
+                alert("Vui lòng chọn số lượng đơn hàng nhỏ hơn");
+            }
+            else {
+                var model = {};
+                //lấy id sản phẩm
+                model.ID = @Model.ID;
+                // lấy số lượng đặt hàng
+                model.Quantity = $("#ipQuantity").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddToCart", "Cart")',
+                    data: JSON.stringify(model),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function () {
+                        alert("Thêm giỏ hàng thành công!")
+                        $('#CartCount').text(@Session["count"] + 1);
+                    },
+                    error: function () {
+                        alert("Lỗi trong khi thêm vào giỏ hàng!");
+                    }
+                }); 
+            }
             return false;
         });
     });
